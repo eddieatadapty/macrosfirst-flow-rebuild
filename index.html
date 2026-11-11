@@ -176,6 +176,17 @@ html.au-embed .phone,html.au-embed .phone *{visibility:visible}
 html.au-embed .phone{position:fixed;top:0;left:0;margin:0;z-index:99;box-shadow:none;max-width:none}
 html.appmode #ads,html.tourmode #ads{display:none!important}
 /* DUO:END */
+/* per-ad recommendations under each phone */
+.au-duo-recs{margin-top:10px;display:flex;flex-direction:column;gap:8px;text-align:left}
+.au-rec-v{margin:0 0 2px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--st-ink2)}
+.au-rec{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;width:100%;text-align:left;background:var(--st-ground);border:1px solid var(--st-hair);border-radius:14px;padding:11px 12px;font:inherit;color:inherit;cursor:pointer;transition:border-color .2s,background .2s}
+.au-rec:hover,.au-rec.on{border-color:var(--st-accent);background:var(--st-card)}
+.au-rec>i{grid-row:span 2;font-style:normal;font-size:11.5px;font-weight:700;color:#fff;background:var(--st-accent);border-radius:999px;padding:3px 7px;align-self:start}
+.au-rec>span{display:flex;flex-direction:column;gap:3px}
+.au-rec b{font-size:14px;line-height:1.3}
+.au-rec em{font-style:normal;font-size:13px;line-height:1.4;color:var(--st-ink2)}
+.au-rec mark{grid-column:2;justify-self:start;background:var(--st-mark);padding:1px 6px;border-radius:4px;font-size:13px;font-weight:700;color:inherit}
+.au-rec mark small{font-weight:500;margin-left:5px;color:var(--st-ink2)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:64px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
@@ -573,7 +584,88 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
 .mf-sso .mf-apple{background:var(--b-ink);color:var(--b-surface);border-color:var(--b-ink)}
 .mf-phone{flex:1;min-height:0;display:flex;justify-content:center;overflow:hidden;margin:4px -6px 0}
 .mf-phone img{height:100%;max-width:100%;object-fit:contain;object-position:50% 0;filter:drop-shadow(0 10px 24px rgba(0,0,0,.14))}
+/* three versions: coach modes (B), trend line (A), macro split (C), comparison table (C) */
+.mf-op2{align-items:flex-start;padding:12px 14px}
+.mf-op2>span:not(.mf-oi){display:flex;flex-direction:column;gap:3px}
+.mf-op2 b{font:700 15.5px var(--b-font)}
+.mf-op2 small{font:500 12.5px/1.4 var(--b-font);color:var(--b-ink2)}
+.mf-op2 .mf-oi{color:var(--b-primary);padding-top:1px}
+.mf-chart{padding:12px 14px 10px;display:flex;flex-direction:column;gap:6px}
+.mf-chh{margin:0;display:flex;flex-direction:column;gap:2px}
+.mf-chh b{font:800 17px var(--b-font);color:var(--b-ink)}
+.mf-chh small{font:500 12px var(--b-font);color:var(--b-ink2)}
+.mf-line{width:100%;height:auto;display:block}
+.mf-lg{fill:none;stroke:var(--b-line);stroke-width:1.5;stroke-dasharray:4 4}
+.mf-la{fill:var(--b-tint)}
+.mf-ll{fill:none;stroke:var(--b-primary);stroke-width:3.5;stroke-linecap:round}
+.mf-ld{fill:var(--b-surface);stroke:var(--b-primary);stroke-width:3}
+.mf-le{fill:var(--b-primary)}
+.mf-chx{margin:0;display:flex;justify-content:space-between;font:600 11.5px var(--b-font);color:var(--b-ink2)}
+.mf-chart-s{padding:8px 12px 8px}
+.mf-tgs{display:grid;grid-template-columns:repeat(4,1fr);padding:10px 8px;text-align:center}
+.mf-tgs div{display:flex;flex-direction:column;gap:3px;padding:0;font:700 14px var(--b-font)}
+.mf-tgs div+div{border-top:0;border-left:1px solid var(--b-line)}
+.mf-tgs b{font:700 11.5px var(--b-font)}
+.mf-tgx div{grid-template-columns:1fr auto;row-gap:2px;padding:9px 0}
+.mf-tgx small{grid-column:1/-1;font:500 12px var(--b-font);color:var(--b-ink2)}
+.mf-split{padding:12px 14px 4px;display:flex;flex-direction:column;gap:4px}
+.mf-split .mf-tg{padding:0}
+.mf-sbar2{display:flex;height:14px;border-radius:7px;overflow:hidden;gap:2px}
+.mf-sp{background:var(--b-protein)}.mf-sc{background:var(--b-carbs)}.mf-sf{background:var(--b-fat)}
+.mf-quote>span small{font:600 11.5px var(--b-font);color:var(--b-ink2);letter-spacing:0;margin-left:4px}
+.mf-bul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.mf-bul li{position:relative;padding-left:24px;font:600 13.5px/1.35 var(--b-font)}
+.mf-bul li::before{content:"✓";position:absolute;left:2px;color:var(--b-primary);font-weight:800}
+.mf-cmp{width:100%;border-collapse:collapse;background:var(--b-surface);border-radius:var(--b-radius);overflow:hidden;font:500 12.5px/1.3 var(--b-font);box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.mf-cmp th{font:700 12.5px var(--b-font);padding:8px 6px;background:var(--b-tint);color:var(--b-primary)}
+.mf-cmp th:first-child{background:var(--b-surface)}
+.mf-cmp td{padding:7px 6px;border-top:1px solid var(--b-line);text-align:center;font-weight:800;color:var(--b-primary);width:46px}
+.mf-cmp td:first-child{text-align:left;font-weight:600;color:var(--b-ink);width:auto;padding-left:12px}
+.mf-pw .mf-pwh{font-size:25px}
 /* SCREENS:END */
+/* MOTION:START — the niconico-style layer (bterzic123.github.io/niconico-flow-rebuild): a dark hero in the app's
+   own colour with drifting words and a floating phone fan, scroll reveals, count-up numbers, and a live walkthrough
+   inside the three ad phones (a finger glides to each button, presses it, the phones move on). Respects reduced motion. */
+.au-top-hero.au-mx{background:var(--st-accent);color:#fff;margin:0 12px;border-radius:0 0 28px 28px;padding-bottom:0;isolation:isolate}
+.au-top-hero.au-mx::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:36px 36px;-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent 95%);mask-image:linear-gradient(180deg,#000 30%,transparent 95%)}
+.au-top-hero.au-mx .au-display,.au-top-hero.au-mx .au-lede,.au-top-hero.au-mx .au-eyebrow,.au-top-hero.au-mx .au-byline{color:#fff}
+.au-top-hero.au-mx .au-lede span,.au-top-hero.au-mx .au-byline{color:rgba(255,255,255,.72)}
+.au-top-hero.au-mx .au-eyebrow i{background:var(--st-hi)}
+.au-top-hero.au-mx .au-btn{background:#fff;color:var(--st-accent)}
+.au-top-hero.au-mx .au-lnk{color:#fff}
+.au-mx-words{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1;-webkit-mask-image:radial-gradient(ellipse 38% 34% at 50% 30%,transparent 45%,#000 100%);mask-image:radial-gradient(ellipse 38% 34% at 50% 30%,transparent 45%,#000 100%)}
+.au-mx-words span{position:absolute;left:100%;white-space:nowrap;font-weight:700;color:rgba(255,255,255,.11);animation:au-fly linear infinite}
+@keyframes au-fly{to{transform:translateX(calc(-100vw - 120%))}}
+.au-mx .au-hp img{animation:au-float 6s ease-in-out infinite}
+.au-mx .au-hp.au-c img{animation-delay:-2s}.au-mx .au-hp.au-r img{animation-delay:-4s}
+@keyframes au-float{50%{transform:translateY(-10px)}}
+.au-mx-icon{position:absolute;right:clamp(16px,6vw,90px);top:clamp(70px,12vw,130px);width:clamp(54px,6vw,84px);border-radius:22%;box-shadow:0 10px 0 rgba(0,0,0,.18),0 18px 40px rgba(0,0,0,.25);animation:au-bob 1.6s ease-in-out infinite;z-index:1}
+@keyframes au-bob{50%{transform:translateY(-9px) rotate(-5deg)}}
+.au-mx-stats{display:grid;grid-template-columns:repeat(4,1fr);margin:12px 12px 0;border-radius:20px;background:var(--st-ground)}
+.au-mx-stats div{padding:26px 16px;text-align:center;border-left:1px solid var(--st-hair)}
+.au-mx-stats div:first-child{border-left:0}
+.au-mx-stats b{display:block;font-size:clamp(28px,3vw,38px);font-weight:600;letter-spacing:-.03em;line-height:1.1;color:var(--st-ink)}
+.au-mx-stats span{display:block;font-size:14px;color:var(--st-ink2);margin-top:6px;line-height:1.35}
+@media (max-width:720px){.au-mx-stats{grid-template-columns:1fr 1fr}.au-mx-stats div:nth-child(3){border-left:0}.au-mx-stats div:nth-child(n+3){border-top:1px solid var(--st-hair)}.au-mx-icon{display:none}}
+/* scroll reveal */
+/* uses the separate `translate` property, never `transform`, so it can't undo a component's own transform (the trio stage is centred with one) */
+.au-rv{opacity:0;translate:0 22px;transition:opacity .7s cubic-bezier(.2,.7,.2,1),translate .7s cubic-bezier(.2,.7,.2,1)}
+.au-rv.au-in{opacity:1;translate:none}
+/* live walkthrough in the three phones */
+.au-walk{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:18px 0 6px;position:sticky;top:64px;z-index:40;padding:10px 0}
+.au-walk.on{background:var(--st-card);padding:12px 16px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.au-walk button{border:0;border-radius:999px;background:var(--st-accent);color:#fff;font:600 15px/1 var(--st-font);padding:12px 18px;cursor:pointer}
+.au-walk button.on{background:var(--st-ink)}
+.au-walkbar{flex:1;min-width:240px;display:none;flex-direction:column;gap:7px}
+.au-walkbar.on{display:flex}
+.au-walkbar span{font-size:15px;line-height:1.4;color:var(--st-ink)}
+.au-walkbar i{display:block;height:4px;border-radius:4px;background:var(--st-hair);overflow:hidden}
+.au-walkbar i b{display:block;height:100%;width:0;background:var(--st-accent);transition:width .35s linear}
+.au-finger{position:absolute;z-index:30;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:rgba(255,255,255,.6);box-shadow:0 0 0 2px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.35);pointer-events:none;opacity:0;transition:left .38s cubic-bezier(.2,.7,.2,1),top .38s cubic-bezier(.2,.7,.2,1),transform .12s,opacity .2s}
+.au-finger.on{opacity:1}.au-finger.press{transform:scale(.7)}
+@media (prefers-reduced-motion:reduce){.au-mx-words span,.au-mx .au-hp img,.au-mx-icon{animation:none}.au-rv{opacity:1;translate:none;transition:none}.au-finger{transition:opacity .2s}}
+html.shot .au-rv,html.phoneonly .au-rv{opacity:1;translate:none}
+/* MOTION:END */
 </style>
 </head>
 <body>
@@ -602,6 +694,7 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
     <div class="au-ctas">
       <a class="au-btn" href="#ideas">See the five ideas</a>
       <a class="au-lnk" href="#prototype">Open the prototype</a>
+      <a class="au-lnk" href="#ads" data-walk>▶ Watch it play in the phones</a>
       <button type="button" class="au-lnk au-play" id="heroVideo" hidden>Watch the 30-second walkthrough</button>
     </div>
   </div>
@@ -670,28 +763,28 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
     <div class="au-split">
       <div>
         <p class="au-kicker">Your ads × your flow</p>
-        <h2 class="au-h2">Three kinds of search bring your installs. <span>One flow for all of them.</span></h2>
+        <h2 class="au-h2">Three kinds of search bring your installs. <span>Three versions of your onboarding.</span></h2>
       </div>
       <div>
-        <p>MacrosFirst runs no Meta ads (the Ad Library shows none, active or past). Its ads are Apple Ads, and the US data we see for 11 October to 11 November 2026 shows you on <b>30 search terms</b>: people who typed <b>“loss”</b> (you show on 41% of those searches), people who typed <b>“macro coach”</b> (32%) and people looking for another app, like <b>“calorie counter - mynetdiary”</b> (6%). Yet every install meets the same welcome, the same account screen and the same <b>“7 days for Free”</b> paywall, whatever they searched.</p><p>Flow Builder can open a different flow by the search an install came from, so the first screens repeat what they typed, and each search is judged on the subscriptions it brings, not the installs.</p>
+        <p>MacrosFirst runs no Meta ads (the Ad Library shows none, active or past). Its ads are Apple Ads, and the US data we see for 11 October to 11 November 2026 shows you on <b>30 search terms</b>: people who typed <b>“loss”</b> (you show on 41% of those searches), people who typed <b>“macro coach”</b> (32%) and people looking for another app, like <b>“calorie counter - mynetdiary”</b> (6%). Yet every install meets the same welcome, the same account screen and the same <b>“7 days for Free”</b> paywall, whatever they searched.</p><p>Flow Builder can open a different flow by the search an install came from. Below, each search gets its own version: different questions, a different plan screen and a different paywall, each judged on the subscriptions it brings, not the installs.</p>
       </div>
     </div>
     <div class="au-duo-stats"><div><b>30</b><span>search terms your Apple Ads show on in the US, 11 Oct–11 Nov 2026</span></div><div><b>3</b><span>different things people want across them: weight loss, macro tracking, another app</span></div><div><b>1</b><span>paywall every install reaches today, whatever they searched</span></div></div>
     <div class="au-pf"><div class="au-pf-h"><h3>Your searches, sorted by what people want</h3><p>The 30 US search terms we see your Apple Ads on, 11 Oct–11 Nov 2026, grouped by intent</p></div><div class="au-pf-bar"><i style="flex:2;background:var(--st-accent)" title="Losing weight"></i><i style="flex:7;background:var(--st-hi)" title="Tracking macros"></i><i style="flex:5;background:var(--st-ink2)" title="Another app’s name"></i><i style="flex:2;background:var(--st-ink3)" title="Your own name"></i><i style="flex:14;background:rgba(0,0,0,.14)" title="No clear intent"></i></div><div class="au-pf-leg"><span><i style="background:var(--st-accent)"></i>Losing weight · 2</span><span><i style="background:var(--st-hi)"></i>Tracking macros · 7</span><span><i style="background:var(--st-ink2)"></i>Another app’s name · 5</span><span><i style="background:var(--st-ink3)"></i>Your own name · 2</span><span><i style="background:rgba(0,0,0,.14)"></i>No clear intent · 14</span></div><div class="au-pf-grid"><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/kw-1.jpg" alt="A frame from the ad"><span class="au-pf-tag">Your biggest search · 41%</span><span class="au-pf-n">2 search terms</span></div><div class="au-pf-bd"><div class="au-pf-hook">“loss”</div><div class="au-pf-meta">41% share of voice, popularity 10 · also “lose” (3%, popularity 12)</div><dl><dt>In the ad</dt><dd>Your search ad: the MacrosFirst listing and its first screenshots, shown to someone who typed “loss”, a weight-loss goal in one word.</dd><dt>The promise</dt><dd>A plan that gets me to a lower weight.</dd><dt>Today it lands on</dt><dd>The same welcome, account screen and “7 days for Free” paywall as every other search.</dd></dl><div class="au-pf-go"><button type="button" data-duogo="a">Open its flow ›</button></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/kw-3.jpg" alt="A frame from the ad"><span class="au-pf-tag">Most terms</span><span class="au-pf-n">7 search terms</span></div><div class="au-pf-bd"><div class="au-pf-hook">“macro coach”</div><div class="au-pf-meta">32% share of voice, popularity 1.4 · also “macro log” (33%), “macromatic” (48%), “dietary” (8%), “intake” (3%), “protein” (2%), “tracker” (0%)</div><dl><dt>In the ad</dt><dd>The same search ad, shown to people who already count protein, carbs and fat and want help setting or logging them.</dd><dt>The promise</dt><dd>Macro targets set for me, and easy logging.</dd><dt>Today it lands on</dt><dd>The same welcome, account screen and paywall as every other search.</dd></dl><div class="au-pf-go"><button type="button" data-duogo="b">Open its flow ›</button></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/kw-4.jpg" alt="A frame from the ad"><span class="au-pf-tag">Switchers</span><span class="au-pf-n">5 search terms</span></div><div class="au-pf-bd"><div class="au-pf-hook">“calorie counter - mynetdiary”</div><div class="au-pf-meta">6% share of voice, popularity 7 · also “cronometer: calorie counter” (1%), “menufit” (1%), “yuka” and “strava” (0%)</div><dl><dt>In the ad</dt><dd>The same search ad, shown to people who typed another calorie or food app’s name.</dd><dt>The promise</dt><dd>A calorie counter, maybe a better one.</dd><dt>Today it lands on</dt><dd>The same welcome, account screen and paywall as every other search.</dd></dl><div class="au-pf-go"><button type="button" data-duogo="c">Open its flow ›</button></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/kw-6.jpg" alt="A frame from the ad"><span class="au-pf-tag">Brand defence · 72%</span><span class="au-pf-n">2 search terms</span></div><div class="au-pf-bd"><div class="au-pf-hook">“macrosfirst”</div><div class="au-pf-meta">72% share of voice, popularity 2.9 · also “macrosfirst - macro tracker” (72%)</div><dl><dt>In the ad</dt><dd>The same search ad, shown to people who already know you.</dd><dt>The promise</dt><dd>MacrosFirst itself.</dd><dt>Today it lands on</dt><dd>The same flow as every other search.</dd></dl><div class="au-pf-go"><span>No phone of its own: they know what they want, so the default flow fits.</span></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/kw-7.jpg" alt="A frame from the ad"><span class="au-pf-tag">Worth a look</span><span class="au-pf-n">14 search terms</span></div><div class="au-pf-bd"><div class="au-pf-hook">“thousands”, “longer”, “carbon”, “keys”</div><div class="au-pf-meta">“carbon” 9%, “thousands” 7%, “purest” 6%, “longer” 5%, “criteria” 5%, “constantly” 3%, “reco” 2%, “keys” 2%, “faster” 1%, “finish” 1%, “key” and “inc” 0%, plus two single Chinese characters (9% and 1%)</div><dl><dt>In the ad</dt><dd>The same search ad, shown on common words that don’t say anyone wants a macro tracker.</dd><dt>The promise</dt><dd>None we can read.</dd><dt>Today it lands on</dt><dd>The same flow as every other search.</dd></dl><div class="au-pf-go"><span>No phone of its own: these searches are worth checking for spend that can’t convert.</span></div></div></article></div><p class="au-pf-note">Counts are search terms, not spend or installs; share of voice is how often your ad shows on that search, and popularity is Apple’s 1–100 score for how often it’s searched. The data is account-level and Apple doesn’t publish it per app. Covers are your own App Store screenshots: the search ad shows the same listing to every one of these searches.</p></div>
-    <div class="au-duo-h"><h3>Three searches, three flows</h3><p>Left to right: someone who searched “loss”, someone who searched “macro coach” and someone who searched another app’s name, “calorie counter - mynetdiary”. Tap <b>Today’s paywall</b> to see where all three land now, then tap through the proposal, or jump straight to an idea.</p></div>
+    <div class="au-duo-h"><h3>Three searches, three versions</h3><p>Left to right: version A for “loss”, version B for “macro coach” and version C for people who searched another app’s name. Each phone asks different questions, shows a different plan and ends on a different paywall, with three recommendations of its own underneath. Tap <b>Today’s paywall</b> to see where all three land now.</p></div>
     <div class="au-duo-steps" id="duoSteps" aria-label="Steps, in every phone"></div>
     <div class="au-duo-ideas" id="duoIdeas" aria-label="The five ideas, in every phone"></div>
     <p class="au-duo-stepcap" id="duoStepCap"></p>
     <div class="au-duo-tog" role="group" aria-label="Which ad"><button type="button" data-duoone="a" class=on>Search 1 · “loss”</button><button type="button" data-duoone="b">Search 2 · “macro coach”</button><button type="button" data-duoone="c">Search 3 · another app</button></div>
     <div class="au-duo au-n3" id="duoStage" data-one="a">
-      <div class="au-duo-ph au-duo-a"><p class="au-duo-pill"><b>Apple Ads search</b><span>“loss” · 41%</span></p><div class="au-duo-fr" id="duoFra"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapa"></p></div><div class="au-duo-ph au-duo-b"><p class="au-duo-pill"><b>Apple Ads search</b><span>“macro coach” · 32%</span></p><div class="au-duo-fr" id="duoFrb"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapb"></p></div><div class="au-duo-ph au-duo-c"><p class="au-duo-pill"><b>Apple Ads search</b><span>another app’s name · 6%</span></p><div class="au-duo-fr" id="duoFrc"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapc"></p></div>
+      <div class="au-duo-ph au-duo-a"><p class="au-duo-pill"><b>Apple Ads search</b><span>“loss” · 41%</span></p><div class="au-duo-fr" id="duoFra"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapa"></p><div class="au-duo-recs" id="duoReca" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-b"><p class="au-duo-pill"><b>Apple Ads search</b><span>“macro coach” · 32%</span></p><div class="au-duo-fr" id="duoFrb"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapb"></p><div class="au-duo-recs" id="duoRecb" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-c"><p class="au-duo-pill"><b>Apple Ads search</b><span>another app’s name · 6%</span></p><div class="au-duo-fr" id="duoFrc"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapc"></p><div class="au-duo-recs" id="duoRecc" aria-label="Recommendations for this ad"></div></div>
     </div>
     <p class="au-duo-hint">Tap through any phone and the others follow. A dot marks the screens that differ by ad.</p>
     <table class="au-duo-tbl" id="duoTbl"></table>
-    <div class="au-duo-next"><div><b>Day 1</b><h4>Pass the Apple Ads keyword into Adapty</h4><p>After a one-time SDK setup, the Apple Ads attribution of each install (campaign, ad group, keyword) arrives as a user attribute and picks the flow at first open. No app release.</p></div><div><b>Week 1</b><h4>One flow per intent</h4><p>Weight loss, macro tracking and other apps’ names each get their own first screens; searches for your own name keep the default flow.</p></div><div><b>Week 2</b><h4>Judge each search on revenue</h4><p>Each search’s flow against today’s, measured on trials, paid subscriptions and what each install from that search earns, so bids follow the searches that pay.</p></div></div>
-    <p class="au-adn">All three phones run the whole flow with all five ideas. You show on about 72% of US searches for your own name, so on the other 28% another app’s ad can take the top slot when people type your name: that’s worth defending. Some terms bring people who aren’t looking for a macro tracker at all, like “carbon” (9%) and “thousands” (7%). The data is account-level, and there is no asa.adapty.io page for MacrosFirst. This layer carries no range: only a test per search can give one.</p>
+    <div class="au-duo-next"><div><b>Day 1</b><h4>Pass the Apple Ads keyword into Adapty</h4><p>After a one-time SDK setup, the Apple Ads attribution of each install (campaign, ad group, keyword) arrives as a user attribute and picks the flow at first open. No app release.</p></div><div><b>Week 1</b><h4>One version per intent</h4><p>Weight loss, macro coaching and other apps’ names each get their own version; searches for your own name keep the default flow.</p></div><div><b>Week 2</b><h4>Judge each search on revenue</h4><p>Each search’s flow against today’s, measured on trials, paid subscriptions and what each install from that search earns, so bids follow the searches that pay.</p></div></div>
+    <p class="au-adn">Each phone is its own version, with the five ideas underneath all three. Lbs and dates are illustrative. You show on about 72% of US searches for your own name, so on the other 28% another app’s ad can take the top slot when people type your name: that’s worth defending. Some terms bring people who aren’t looking for a macro tracker at all, like “carbon” (9%) and “thousands” (7%). The data is account-level, and there is no asa.adapty.io page for MacrosFirst. This layer carries no range: only a test per search can give one.</p>
   </div>
-  <script type="application/json" id="duoData">{"flows": [{"k": "a", "ad": "a", "label": "Search 1 · “loss”", "chan": "Apple Ads search", "pill": "“loss” · 41%"}, {"k": "b", "ad": "b", "label": "Search 2 · “macro coach”", "chan": "Apple Ads search", "pill": "“macro coach” · 32%"}, {"k": "c", "ad": "c", "label": "Search 3 · another app", "chan": "Apple Ads search", "pill": "another app’s name · 6%"}], "rows": [{"id": "search", "h": "Their search", "a": "“loss”: your ad shows on 41% of these searches.", "b": "“macro coach”: your ad shows on 32%.", "c": "“calorie counter - mynetdiary”, another app’s name: your ad shows on 6%."}, {"id": "welcome", "h": "Welcome", "a": "“You searched “loss”: a weight-loss plan built on your macros”", "b": "“You searched “macro coach”: targets set for your body, then a coach in your pocket”", "c": "“Looking for a calorie counter? MacrosFirst counts calories, and the protein, carbs and fat behind them”"}, {"id": "goal", "h": "Goal", "a": "Lose Weight is already picked: they told you in their search.", "b": "Nothing picked: “macro coach” doesn’t say which way they want to go.", "c": "Nothing picked: a calorie counter can be for losing, keeping or gaining."}, {"id": "plan", "h": "Your plan", "a": "The targets and the goal date, as your app builds them.", "b": "Adds “Like a macro coach: protein, carbs and fat, set for your body and your goal.”", "c": "Adds “Your calories, 1163 a day, split into the macros that make them up.”"}], "tableTitle": "The same app, answering three different searches.", "tableSub": "The five ideas sit underneath all three. Only these screens change with what they searched; each row opens that screen in every phone.", "steps": [{"id": "search", "label": "The search"}, {"id": "today", "label": "Today’s paywall"}, {"sep": "Proposed"}, {"id": "welcome"}, {"id": "goal"}, {"id": "target"}, {"id": "plan"}, {"id": "log"}, {"id": "paywall"}, {"id": "offer"}, {"id": "signup"}], "stepCaps": {"today": "<b>Today</b>, all three searches open the same welcome, ask for an account before the price and end on this paywall: “7 days for Free”, then $5.99 a month billed at $71.99 a year, with nothing from what they searched.", "target": "Same for every search: their target weight sets the goal date that the plan and the paywall repeat.", "log": "Same for every search: one meal logged from their own food list before the price (idea 2).", "paywall": "Same for every search: “Reach 135 lbs by Feb 24, 2027” from their own target (idea 1), and 50% OFF on the first screen (idea 3).", "offer": "Same for every search: Monthly at $11.99 a month, once, when they close the paywall (idea 5).", "signup": "Same for every search: the account is asked for after the free week starts, not before the price (idea 4)."}}</script>
+  <script type="application/json" id="duoData">{"flows": [{"k": "a", "ad": "a", "label": "Search 1 · “loss”", "chan": "Apple Ads search", "pill": "“loss” · 41%", "version": "Version A · The date first", "recs": [{"step": "q1", "title": "Skip the goal question", "why": "<b>Try</b> opening on the target weight with Lose Weight already set, <b>because</b> their search already said “loss”, and every question before the plan loses people.", "impact": "+5–10%", "il": "CR to purchase"}, {"step": "plan", "title": "Show the line to their date", "why": "<b>Try</b> a trend-weight line from today to their goal date, <b>because</b> someone who typed “loss” is buying an outcome, and a date they can see makes it real.", "impact": "+10–15%", "il": "CR to purchase"}, {"step": "paywall", "title": "Open the paywall on their line", "why": "<b>Try</b> the headline and line from their plan above 50% OFF, <b>because</b> the price then reads as the cost of reaching that date.", "impact": "+5–15%", "il": "CR to purchase"}]}, {"k": "b", "ad": "b", "label": "Search 2 · “macro coach”", "chan": "Apple Ads search", "pill": "“macro coach” · 32%", "version": "Version B · The coach first", "recs": [{"step": "q2", "title": "Ask how hands-on the coach is", "why": "<b>Try</b> Autopilot, Copilot or Manual right after the goal, <b>because</b> “macro coach” searchers want guidance, and your three modes already answer that.", "impact": "+5–10%", "il": "CR to purchase"}, {"step": "plan", "title": "Explain each target like a coach", "why": "<b>Try</b> a per-meal line under each macro and the weekly check-in, <b>because</b> a coach’s value is the why, and today the targets screen shows only numbers.", "impact": "+5–10%", "il": "CR to purchase"}, {"step": "paywall", "title": "Lead with proof and the coach", "why": "<b>Try</b> Karli L.’s review and what Autopilot does at the top of the paywall, <b>because</b> coach searchers are choosing who to trust with their targets.", "impact": "+5–10%", "il": "CR to purchase"}]}, {"k": "c", "ad": "c", "label": "Search 3 · another app", "chan": "Apple Ads search", "pill": "another app’s name · 6%", "version": "Version C · The switch", "recs": [{"step": "q1", "title": "Ask what they track today", "why": "<b>Try</b> “What do you track today?” as the first question, <b>because</b> they were looking for another calorie counter, and the answer tells you what to show next.", "impact": "+5–10%", "il": "CR to purchase"}, {"step": "plan", "title": "Show the macros inside their calories", "why": "<b>Try</b> their 1163 Cal split into protein, carbs and fat, <b>because</b> that split is what a calorie-only counter doesn’t give them.", "impact": "+5–15%", "il": "CR to purchase"}, {"step": "paywall", "title": "Free vs Plus on the paywall", "why": "<b>Try</b> a Free vs Plus table from your own listing, <b>because</b> switchers compare before they commit, and the table shows what the year buys.", "impact": "+5–10%", "il": "CR to purchase"}]}], "rows": [{"id": "search", "h": "Their search", "a": "“loss”: your ad shows on 41% of these searches.", "b": "“macro coach”: your ad shows on 32%.", "c": "“calorie counter - mynetdiary”, another app’s name: your ad shows on 6%."}, {"id": "welcome", "h": "Welcome", "a": "“You searched “loss”: a weight-loss plan built on your macros”", "b": "“You searched “macro coach”: targets set for your body, then a coach in your pocket”", "c": "“Looking for a calorie counter? MacrosFirst counts calories, and the protein, carbs and fat behind them”"}, {"id": "q1", "h": "First question", "a": "Straight to the target weight: Lose Weight is already set (A1).", "b": "Your goal question, nothing picked.", "c": "“What do you track today?”: calories only, calories and protein, every macro, nothing yet (C1)."}, {"id": "q2", "h": "Second question", "a": "None: version A asks one question, then shows the plan.", "b": "“How should MacrosFirst coach you?”: Autopilot, Copilot or Manual (B1).", "c": "Your goal question, nothing picked."}, {"id": "plan", "h": "Your plan", "a": "A trend-weight line from 150 lbs today to 135 lbs by Feb 24, 2027 (A2).", "b": "The targets with a per-meal line each, and the weekly check-in (B2).", "c": "1163 Cal split into protein, carbs and fat, and Macro Math (C2)."}, {"id": "paywall", "h": "Paywall", "a": "“Reach 135 lbs by Feb 24, 2027” over their line, then 50% OFF (A3).", "b": "“Your macro coach, 7 days for Free”: Karli L.’s review and what the coach does (B3).", "c": "“More than a calorie counter”: a Free vs Plus table (C3)."}], "tableTitle": "The same app, three versions.", "tableSub": "The five ideas sit underneath all three. These are the screens that change with the search; each row opens that step in every phone.", "steps": [{"id": "search", "label": "The search"}, {"id": "today", "label": "Today’s paywall"}, {"sep": "Proposed"}, {"id": "welcome", "label": "Welcome"}, {"id": "q1", "label": "First question", "ids": {"a": "target", "b": "goal", "c": "track-c"}}, {"id": "q2", "label": "Second question", "ids": {"a": "target", "b": "coach-b", "c": "goal"}}, {"id": "plan", "label": "Your plan", "ids": {"a": "plan-a", "b": "plan-b", "c": "plan-c"}}, {"id": "log", "label": "First log"}, {"id": "paywall", "label": "Paywall", "ids": {"a": "paywall-a", "b": "paywall-b", "c": "paywall-c"}}, {"id": "offer", "label": "On close"}, {"id": "signup", "label": "Account"}], "stepCaps": {"today": "<b>Today</b>, all three searches open the same welcome, ask for an account before the price and end on this paywall: “7 days for Free”, then $5.99 a month billed at $71.99 a year, with nothing from what they searched.", "log": "Same in every version: one meal logged from their own food list before the price (idea 2).", "offer": "Same in every version: Monthly at $11.99 a month, once, when they close the paywall (idea 5).", "signup": "Same in every version: the account is asked for after the free week starts, not before the price (idea 4)."}}</script>
 </section>
 
 <section class="au-sec au-white" id="prototype">
@@ -739,57 +832,129 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
     <p class="mf-echo" data-show="ad:c">Looking for a calorie counter? MacrosFirst counts calories, and the protein, carbs and fat behind them</p>
     <div class="mf-phone"><img src="assets/crop/phone.png" alt="MacrosFirst food log: Lunch, 3+ million verified foods"></div>
     <p class="mf-stars">★★★★★ 4.9 · 23.8K ratings on the App Store</p>
-    <button class="mf-cta" data-go="goal">Get Started</button>
+    <button class="mf-cta" data-go="next">Get Started</button>
     <p class="mf-small">Already have an account? <b>Sign In</b></p>
   </div>
 </section>
 
-<section class="scr" data-id="goal">
+<section class="scr" data-id="target" data-ad="a">
   <div class="body">
-    <div class="mf-top"><button class="mf-back" data-back aria-label="Back">‹</button><div class="mf-prog"><i style="width:20%"></i></div></div>
-    <img class="mf-ic" src="assets/crop/i-flag.png" alt="">
-    <h1 class="mf-h1" data-hl="1">What can we help you achieve?</h1>
-    <p class="mf-sub">This information helps us create a suitable plan for you.</p>
-    <div class="mf-opts" data-hl="1">
-      <button class="mf-op" data-pick="goal:gain"><span class="mf-oi">↗</span><span>Gain Weight</span></button>
-      <button class="mf-op" data-pick="goal:lose"><span class="mf-oi">↘</span><span>Lose Weight</span></button>
-      <button class="mf-op" data-pick="goal:keep"><span class="mf-oi">→</span><span>Maintain Weight</span></button>
-    </div>
-    <p class="mf-hint" data-show="ad:a">“Lose Weight” is picked: you searched “loss”.</p>
-    <button class="mf-cta" data-go="target">Continue</button>
-  </div>
-</section>
-
-<section class="scr" data-id="target">
-  <div class="body">
-    <div class="mf-top"><button class="mf-back" data-back aria-label="Back">‹</button><div class="mf-prog"><i style="width:55%"></i></div></div>
+    <div class="mf-top"><button class="mf-back" data-back aria-label="Back">‹</button><div class="mf-prog"><i style="width:45%"></i></div></div>
+    <p class="mf-hint" data-hl="a1">✓ Lose Weight is set: you searched “loss”</p>
     <img class="mf-ic" src="assets/crop/i-scale.png" alt="">
-    <h1 class="mf-h1">What's your target weight?</h1>
+    <h1 class="mf-h1" data-hl="a1">What's your target weight?</h1>
     <div class="mf-seg"><b>lbs</b><span>kg</span></div>
     <div class="mf-num"><button data-pick="tw:140">140</button><button data-pick="tw:135">135</button><button data-pick="tw:130">130</button><span>lbs</span></div>
     <p class="mf-sub mf-c">From 150 lbs today. Losing <b data-bind="label:tw"></b> lbs is an achievable goal!</p>
     <p class="mf-sub mf-c">With 1 lb a week, you will achieve your goal weight by <b data-bind="label:twdate"></b>.</p>
-    <button class="mf-cta" data-go="plan">Continue</button>
+    <button class="mf-cta" data-go="next">Continue</button>
   </div>
 </section>
 
-<section class="scr" data-id="plan">
+<section class="scr" data-id="track-c" data-ad="c">
   <div class="body">
-    <img class="mf-ic" src="assets/crop/i-target.png" alt="">
-    <h1 class="mf-h1">Your macro targets are ready!</h1>
-    <p class="mf-coach" data-show="ad:b">Like a macro coach: protein, carbs and fat, set for your body and your goal.</p>
-    <p class="mf-coach" data-show="ad:c">Your calories, 1163 a day, split into the macros that make them up.</p>
-    <div class="mf-card mf-tg" data-hl="1">
-      <div><b class="mf-p">Protein</b><span>104 g</span><em>36 %</em></div>
-      <div><b class="mf-cb">Carbs</b><span>99 g</span><em>34 %</em></div>
-      <div><b class="mf-f">Fat</b><span>39 g</span><em>30 %</em></div>
-      <div><b class="mf-k">Calories</b><span>1163 Cal</span><em>100 %</em></div>
+    <div class="mf-top"><button class="mf-back" data-back aria-label="Back">‹</button><div class="mf-prog"><i style="width:20%"></i></div></div>
+    <img class="mf-ic" src="assets/crop/i-scale.png" alt="">
+    <h1 class="mf-h1">What do you track today?</h1>
+    <p class="mf-sub">You were looking for a calorie counter. Tell us where you're starting from.</p>
+    <div class="mf-opts" data-hl="c1">
+      <button class="mf-op" data-pick="track:cal"><span class="mf-oi">#</span><span>Calories only</span></button>
+      <button class="mf-op" data-pick="track:calp"><span class="mf-oi">+</span><span>Calories and protein</span></button>
+      <button class="mf-op" data-pick="track:all"><span class="mf-oi">≡</span><span>Every macro</span></button>
+      <button class="mf-op" data-pick="track:none"><span class="mf-oi">○</span><span>Nothing yet</span></button>
     </div>
-    <div class="mf-goalcard"><span>🎯</span><p><b><span data-bind="tw"></span> lbs by <span data-bind="label:twdate"></span></b><small>1 lb a week · your plan follows you to the paywall</small></p></div>
-    <p class="mf-tiny">The information provided here is for informational purposes only. Consult a healthcare provider before starting any significant weight modification program.</p>
-    <button class="mf-cta" data-go="log">Looks good!</button>
+    <button class="mf-cta" data-go="next">Continue</button>
   </div>
 </section>
+
+<section class="scr" data-id="goal" data-ad="b c">
+  <div class="body">
+    <div class="mf-top"><button class="mf-back" data-back aria-label="Back">‹</button><div class="mf-prog"><i class="mf-pg-b" style="width:30%"></i></div></div>
+    <img class="mf-ic" src="assets/crop/i-flag.png" alt="">
+    <h1 class="mf-h1">What can we help you achieve?</h1>
+    <p class="mf-sub">This information helps us create a suitable plan for you.</p>
+    <div class="mf-opts">
+      <button class="mf-op" data-pick="goal:gain"><span class="mf-oi">↗</span><span>Gain Weight</span></button>
+      <button class="mf-op" data-pick="goal:lose"><span class="mf-oi">↘</span><span>Lose Weight</span></button>
+      <button class="mf-op" data-pick="goal:keep"><span class="mf-oi">→</span><span>Maintain Weight</span></button>
+    </div>
+    <button class="mf-cta" data-go="next">Continue</button>
+  </div>
+</section>
+
+<section class="scr" data-id="coach-b" data-ad="b">
+  <div class="body">
+    <div class="mf-top"><button class="mf-back" data-back aria-label="Back">‹</button><div class="mf-prog"><i style="width:60%"></i></div></div>
+    <img class="mf-ic" src="assets/crop/i-target.png" alt="">
+    <h1 class="mf-h1">How should MacrosFirst coach you?</h1>
+    <p class="mf-sub">You searched “macro coach”. Pick how hands-on it is; you can change it any time.</p>
+    <div class="mf-opts" data-hl="b1">
+      <button class="mf-op mf-op2" data-pick="coach:auto"><span class="mf-oi">◎</span><span><b>Autopilot</b><small>Sets your calories, protein, carbs and fat, then updates them in weekly check-ins.</small></span></button>
+      <button class="mf-op mf-op2" data-pick="coach:co"><span class="mf-oi">◐</span><span><b>Copilot</b><small>Sets your weekly calorie budget; you set the macros for each day.</small></span></button>
+      <button class="mf-op mf-op2" data-pick="coach:man"><span class="mf-oi">○</span><span><b>Manual</b><small>You set your own targets for each day of the week.</small></span></button>
+    </div>
+    <button class="mf-cta" data-go="next">Continue</button>
+  </div>
+</section>
+
+<section class="scr" data-id="plan-a" data-ad="a">
+  <div class="body">
+    <img class="mf-ic" src="assets/crop/i-target.png" alt="">
+    <h1 class="mf-h1">Your plan is ready!</h1>
+    <div class="mf-card mf-chart" data-hl="1 a2">
+      <p class="mf-chh"><b><span data-bind="tw"></span> lbs by <span data-bind="label:twdate"></span></b><small>Trend weight, 1 lb a week</small></p>
+      <svg class="mf-line" viewBox="0 0 300 110" aria-hidden="true"><path class="mf-lg" d="M8 96H292"/><path class="mf-la" d="M8 18C70 26 110 46 160 62S250 88 292 92L292 96L8 96Z"/><path class="mf-ll" d="M8 18C70 26 110 46 160 62S250 88 292 92"/><circle class="mf-ld" cx="8" cy="18" r="5"/><circle class="mf-le" cx="292" cy="92" r="6"/></svg>
+      <p class="mf-chx"><span>150 lbs · today</span><span><span data-bind="tw"></span> lbs · <span data-bind="label:twdate"></span></span></p>
+    </div>
+    <div class="mf-card mf-tg mf-tgs">
+      <div><b class="mf-p">Protein</b><span>104 g</span></div>
+      <div><b class="mf-cb">Carbs</b><span>99 g</span></div>
+      <div><b class="mf-f">Fat</b><span>39 g</span></div>
+      <div><b class="mf-k">Calories</b><span>1163</span></div>
+    </div>
+    <p class="mf-tiny">The information provided here is for informational purposes only. Consult a healthcare provider before starting any significant weight modification program.</p>
+    <button class="mf-cta" data-go="next">Looks good!</button>
+  </div>
+</section>
+
+<section class="scr" data-id="plan-b" data-ad="b">
+  <div class="body">
+    <h1 class="mf-h1">Your macro targets are ready!</h1>
+    <p class="mf-coach" data-show="coach:auto">On Autopilot: these update in your weekly check-in, from your log and your trend weight.</p>
+    <p class="mf-coach" data-show="coach:co">On Copilot: 8,141 Cal for the week. You set the macros for each day.</p>
+    <p class="mf-coach" data-show="coach:man">On Manual: start from these, then set your own for each day of the week.</p>
+    <div class="mf-card mf-tg mf-tgx" data-hl="1 b2">
+      <div><b class="mf-p">Protein</b><span>104 g</span><small>About 35 g at each of 3 meals</small></div>
+      <div><b class="mf-cb">Carbs</b><span>99 g</span><small>About 33 g a meal</small></div>
+      <div><b class="mf-f">Fat</b><span>39 g</span><small>About 13 g a meal</small></div>
+      <div><b class="mf-k">Calories</b><span>1163 Cal</span><small>What all three add up to</small></div>
+    </div>
+    <div class="mf-goalcard" data-hl="b2"><span>📅</span><p><b>A check-in every week</b><small>MacrosFirst works out what you really burn from your log and weight trend, then moves your targets.</small></p></div>
+    <button class="mf-cta" data-go="next">Looks good!</button>
+  </div>
+</section>
+
+<section class="scr" data-id="plan-c" data-ad="c">
+  <div class="body">
+    <h1 class="mf-h1">Your 1163 calories, and what's inside them</h1>
+    <p class="mf-coach" data-show="track:cal">You count calories today. Here are the protein, carbs and fat behind them.</p>
+    <p class="mf-coach" data-show="track:calp">You count calories and protein. Carbs and fat complete the picture.</p>
+    <p class="mf-coach" data-show="track:all">You count every macro already. MacrosFirst sets them and keeps them in step.</p>
+    <p class="mf-coach" data-show="track:none">Starting fresh: one number to eat to, and the three that make it up.</p>
+    <div class="mf-card mf-split" data-hl="1 c2">
+      <div class="mf-sbar2"><i class="mf-sp" style="flex:36"></i><i class="mf-sc" style="flex:34"></i><i class="mf-sf" style="flex:30"></i></div>
+      <div class="mf-tg">
+        <div><b class="mf-p">Protein</b><span>104 g</span><em>36 %</em></div>
+        <div><b class="mf-cb">Carbs</b><span>99 g</span><em>34 %</em></div>
+        <div><b class="mf-f">Fat</b><span>39 g</span><em>30 %</em></div>
+        <div><b class="mf-k">Calories</b><span>1163 Cal</span><em>100 %</em></div>
+      </div>
+    </div>
+    <div class="mf-goalcard"><span>🧮</span><p><b>Macro Math</b><small>Calories that always match your macros, even when labels don't.</small></p></div>
+    <button class="mf-cta" data-go="next">Looks good!</button>
+  </div>
+</section>
+
 
 <section class="scr" data-id="log">
   <div class="mf-lhd"><span>‹</span><b>Lunch ▾</b><small>Your first log</small></div>
@@ -804,17 +969,62 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
       <div class="mf-row"><div><b>Chicken Grilled</b><small>160 g • <i class="mf-p">P50</i> <i class="mf-cb">C0</i> <i class="mf-f">F5</i> <i class="mf-k">247</i></small></div><button data-toggle="eat:chick">+</button></div>
     </div>
     <div class="mf-left" data-hl="2"><p>Protein left today</p><div class="mf-bar"><i id="mfPbar"></i></div><b><span id="mfPleft">104</span> g of 104 g</b></div>
-    <button class="mf-cta" data-go="paywall"><span data-show="logged:1">Log · see my plan</span><span data-show="logged:0">Skip for now</span></button>
+    <button class="mf-cta" data-go="next"><span data-show="logged:1">Log · see my plan</span><span data-show="logged:0">Skip for now</span></button>
   </div>
 </section>
 
-<section class="scr mf-pw" data-id="paywall">
+<section class="scr mf-pw" data-id="paywall-a" data-ad="a">
   <button class="mf-x" data-go="offer" aria-label="Close">✕</button>
   <div class="body mf-pwb">
-    <h1 class="mf-pwh" data-hl="1">Reach <span data-bind="tw"></span> lbs by <span data-bind="label:twdate"></span></h1>
+    <h1 class="mf-pwh" data-hl="1 a3">Reach <span data-bind="tw"></span> lbs by <span data-bind="label:twdate"></span></h1>
+    <div class="mf-card mf-chart mf-chart-s" data-hl="a3">
+      <svg class="mf-line" viewBox="0 0 300 110" aria-hidden="true"><path class="mf-lg" d="M8 96H292"/><path class="mf-la" d="M8 18C70 26 110 46 160 62S250 88 292 92L292 96L8 96Z"/><path class="mf-ll" d="M8 18C70 26 110 46 160 62S250 88 292 92"/><circle class="mf-ld" cx="8" cy="18" r="5"/><circle class="mf-le" cx="292" cy="92" r="6"/></svg>
+      <p class="mf-chx"><span>Today · 150 lbs</span><span><span data-bind="label:twdate"></span></span></p>
+    </div>
     <p class="mf-pwp">1163 Cal · 104 g protein a day · 7 days for Free</p>
     <div class="mf-proof"><div><b>+5 Million</b><small>users</small></div><div><b>4.9 stars</b><span>★★★★★</span><small>19K reviews</small></div></div>
-    <div class="mf-card mf-quote"><span>★★★★★</span><b>Logging food has never been this easy</b><p>This app is so easy to use. Finally, I can log food very quickly. I appreciate the scanning and AI features that are included. It really saves me time!</p><small>Karli L.</small></div>
+    <div class="mf-plan" data-hl="3"><div><b>Annual</b><small>billed at $71.99/year</small></div><strong>$5.99/mo</strong><span class="mf-off">50% OFF</span></div>
+    <p class="mf-vs" data-hl="3">Monthly is $11.99/mo: $143.88 a year. Annual saves $71.89.</p>
+    <p class="mf-ok">✓ No payment due now</p>
+    <button class="mf-cta" data-go="signup">Try For $0.00</button>
+    <p class="mf-links"><span>View all plans</span></p>
+  </div>
+</section>
+
+<section class="scr mf-pw" data-id="paywall-b" data-ad="b">
+  <button class="mf-x" data-go="offer" aria-label="Close">✕</button>
+  <div class="body mf-pwb">
+    <h1 class="mf-pwh">Your macro coach, 7 days for Free</h1>
+    <p class="mf-pwp" data-hl="1"><span data-show="coach:auto">Autopilot</span><span data-show="coach:co">Copilot</span><span data-show="coach:man">Manual</span> · 1163 Cal · 104 g protein a day</p>
+    <div class="mf-card mf-quote" data-hl="b3"><span>★★★★★ <small>4.9 stars · 19K reviews</small></span><b>Logging food has never been this easy</b><p>This app is so easy to use. Finally, I can log food very quickly. I appreciate the scanning and AI features that are included. It really saves me time!</p><small>Karli L.</small></div>
+    <ul class="mf-bul" data-hl="b3">
+      <li>Targets updated in weekly check-ins</li>
+      <li>AI Food Search by voice, text or photo</li>
+      <li>Expenditure charts: what you really burn</li>
+    </ul>
+    <div class="mf-plan" data-hl="3"><div><b>Annual</b><small>billed at $71.99/year</small></div><strong>$5.99/mo</strong><span class="mf-off">50% OFF</span></div>
+    <p class="mf-vs" data-hl="3">Monthly is $11.99/mo: $143.88 a year. Annual saves $71.89.</p>
+    <p class="mf-ok">✓ No payment due now</p>
+    <button class="mf-cta" data-go="signup">Try For $0.00</button>
+    <p class="mf-links"><span>View all plans</span></p>
+  </div>
+</section>
+
+<section class="scr mf-pw" data-id="paywall-c" data-ad="c">
+  <button class="mf-x" data-go="offer" aria-label="Close">✕</button>
+  <div class="body mf-pwb">
+    <h1 class="mf-pwh">More than a calorie counter</h1>
+    <p class="mf-pwp" data-hl="1">Your 1163 Cal as 104 g protein, 99 g carbs, 39 g fat · 7 days for Free</p>
+    <table class="mf-cmp" data-hl="c3">
+      <thead><tr><th></th><th>Free</th><th>Plus</th></tr></thead>
+      <tbody>
+        <tr><td>4+ million verified foods, barcode scan</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Your own targets for each day</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Autopilot: targets updated every week</td><td>–</td><td>✓</td></tr>
+        <tr><td>AI Food Search: voice, text, photo</td><td>–</td><td>✓</td></tr>
+        <tr><td>Macro Math</td><td>–</td><td>✓</td></tr>
+      </tbody>
+    </table>
     <div class="mf-plan" data-hl="3"><div><b>Annual</b><small>billed at $71.99/year</small></div><strong>$5.99/mo</strong><span class="mf-off">50% OFF</span></div>
     <p class="mf-vs" data-hl="3">Monthly is $11.99/mo: $143.88 a year. Annual saves $71.89.</p>
     <p class="mf-ok">✓ No payment due now</p>
@@ -830,7 +1040,7 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
     <p class="mf-sub">Keep your targets and your first log. Start month to month instead.</p>
     <div class="mf-plan mf-on" data-hl="5"><div><b>Monthly</b><small>Cancel anytime in Settings</small></div><strong>$11.99/mo</strong></div>
     <button class="mf-cta" data-go="signup">Start monthly</button>
-    <button class="mf-ghost" data-go="paywall">Back to the annual plan</button>
+    <button class="mf-ghost" data-back>Back to the annual plan</button>
   </div>
 </section>
 
@@ -943,7 +1153,9 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
   ],
   "plan": "year",
   "twdate": "135",
-  "_ad": "a"
+  "_ad": "a",
+  "coach": "auto",
+  "track": "cal"
  },
  "labels": {
   "tw": {
@@ -960,18 +1172,24 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
  "chips": {
   "search": "App Store",
   "welcome": "Welcome",
-  "goal": "Goal",
   "target": "Target",
-  "plan": "Your plan",
+  "goal": "Goal",
+  "coach-b": "Coach mode",
+  "track-c": "What you track",
+  "plan-a": "Your plan",
+  "plan-b": "Your plan",
+  "plan-c": "Your plan",
   "log": "First log",
-  "paywall": "Paywall",
+  "paywall-a": "Paywall",
+  "paywall-b": "Paywall",
+  "paywall-c": "Paywall",
   "offer": "On close",
   "signup": "Account"
  },
  "hero": [
-  "plan",
-  "paywall",
-  "log"
+  "plan-a",
+  "paywall-c",
+  "coach-b"
  ],
  "outcome": {
   "cr": "+20%",
@@ -979,9 +1197,9 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
  },
  "ideas": [
   {
-   "screen": "plan",
+   "screen": "plan-a",
    "title": "Carry the plan they built all the way to the price",
-   "what": "Your quiz ends on “Your macro targets are ready!” (1163 Cal, 104 g protein) and a goal date. Then come congratulations, testimonials, an account, a trial explainer, a reminder picker and a notification prompt, and the paywall opens on “7 days for Free”. Open it on the plan: “Reach 135 lbs by Feb 24, 2027”.",
+   "what": "Your quiz ends on “Your macro targets are ready!” (1163 Cal, 104 g protein) and a goal date. Then come congratulations, testimonials, an account, a trial explainer, a reminder picker and a notification prompt, and the paywall opens on “7 days for Free”. Open it on their plan instead: the date for “loss”, the coach mode for “macro coach”, the macro split for a switcher.",
    "impact": "+10–20%",
    "il": "CR to purchase"
   },
@@ -993,7 +1211,7 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
    "il": "CR to purchase"
   },
   {
-   "screen": "paywall",
+   "screen": "paywall-a",
    "title": "Put the 50% on the first paywall, not behind “View all plans”",
    "what": "The first paywall says “Then $5.99/month, $71.99 billed annually”. The 50% OFF badge and the $11.99 monthly only appear after “View all plans”. Show the anchor where people decide: monthly is $143.88 a year, annual saves $71.89.",
    "impact": "+5–15%",
@@ -1018,30 +1236,12 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
   "search": {
    "idea": 0,
    "t": "Opens on their App Store search",
-   "why": "A proposal: your Apple Ads show on searches like “loss”, “macro coach” and another app’s name, “calorie counter - mynetdiary”. Here the first screens follow what they typed."
+   "why": "A proposal: your Apple Ads show on searches like “loss”, “macro coach” and another app’s name. Each search opens its own version of your onboarding."
   },
   "welcome": {
    "idea": 0,
    "t": "Your welcome, your words",
-   "why": "Your headline and food rows, under a line that repeats their search. The tracking prompt that opens on this screen today moves to later."
-  },
-  "goal": {
-   "idea": 0,
-   "t": "Your goal question",
-   "why": "Your own question and three answers. After the “loss” search, Lose Weight is already picked; the other searches leave it to them."
-  },
-  "target": {
-   "idea": 0,
-   "t": "Target weight",
-   "why": "Your own question, in lbs. The target and its date carry into the plan and the paywall headline."
-  },
-  "plan": {
-   "idea": 1,
-   "t": "Carry the plan to the price",
-   "why": "<b>Try</b> naming the goal weight and date from this screen in the paywall headline, <b>because</b> six screens sit between your plan and a paywall that opens on “7 days for Free”.",
-   "iv": "CR +10–20%",
-   "il": "to purchase",
-   "also": "The targets are the ones in your recording; your app recalculates them from each user’s answers."
+   "why": "Your headline and food log, under a line that repeats their search. The tracking prompt that opens here today moves to later."
   },
   "log": {
    "idea": 2,
@@ -1050,14 +1250,6 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
    "iv": "CR +5–15%",
    "il": "to purchase",
    "also": "Rows and macros verbatim from your recording; the protein left counts down from 104 g."
-  },
-  "paywall": {
-   "idea": 3,
-   "t": "The 50% where people decide",
-   "why": "<b>Try</b> showing 50% OFF and the $143.88 monthly year on the first paywall, <b>because</b> today both hide behind “View all plans”.",
-   "iv": "ARPU +5–15%",
-   "il": "",
-   "also": "Also here: idea 1, their goal and date in the headline. Proof and Karli’s review are yours, word for word."
   },
   "offer": {
    "idea": 5,
@@ -1072,6 +1264,80 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
    "why": "<b>Try</b> asking for the account right after “Try For $0.00”, <b>because</b> today it stands between the plan and the paywall, where every extra step loses people.",
    "iv": "CR +5–10%",
    "il": "to purchase"
+  },
+  "target": {
+   "idea": 0,
+   "t": "Version A · Skip the goal question",
+   "why": "<b>Try</b> opening on the target weight with Lose Weight already set, <b>because</b> “loss” already answered the goal question.",
+   "iv": "CR +5–10%",
+   "il": "to purchase · version A"
+  },
+  "goal": {
+   "idea": 0,
+   "t": "Your goal question",
+   "why": "Your own question. “macro coach” and another app’s name don’t say which way they want to go, so nothing is picked."
+  },
+  "coach-b": {
+   "idea": 0,
+   "t": "Version B · Ask how hands-on the coach is",
+   "why": "<b>Try</b> Autopilot, Copilot or Manual right after the goal, <b>because</b> “macro coach” searchers want guidance, and your three modes answer exactly that.",
+   "iv": "CR +5–10%",
+   "il": "to purchase · version B"
+  },
+  "track-c": {
+   "idea": 0,
+   "t": "Version C · Ask what they track today",
+   "why": "<b>Try</b> “What do you track today?” first, <b>because</b> they were looking for another calorie counter, and the answer tells you what to show next.",
+   "iv": "CR +5–10%",
+   "il": "to purchase · version C"
+  },
+  "plan-a": {
+   "idea": 1,
+   "t": "Carry the plan to the price",
+   "why": "<b>Try</b> carrying the plan from this screen into the paywall headline, <b>because</b> six screens sit between your plan and a paywall that opens on “7 days for Free”.",
+   "iv": "CR +10–20%",
+   "il": "to purchase",
+   "also": "Version A adds A2: a trend-weight line from today to their date (+10–15% CR). Weights and dates are illustrative."
+  },
+  "plan-b": {
+   "idea": 1,
+   "t": "Carry the plan to the price",
+   "why": "<b>Try</b> carrying the plan from this screen into the paywall headline, <b>because</b> six screens sit between your plan and a paywall that opens on “7 days for Free”.",
+   "iv": "CR +10–20%",
+   "il": "to purchase",
+   "also": "Version B adds B2: a per-meal line under each target and the weekly check-in (+5–10% CR)."
+  },
+  "plan-c": {
+   "idea": 1,
+   "t": "Carry the plan to the price",
+   "why": "<b>Try</b> carrying the plan from this screen into the paywall headline, <b>because</b> six screens sit between your plan and a paywall that opens on “7 days for Free”.",
+   "iv": "CR +10–20%",
+   "il": "to purchase",
+   "also": "Version C adds C2: their calories split into protein, carbs and fat (+5–15% CR)."
+  },
+  "paywall-a": {
+   "idea": 3,
+   "t": "The 50% where people decide",
+   "why": "<b>Try</b> showing 50% OFF and the $143.88 monthly year on the first paywall, <b>because</b> today both hide behind “View all plans”.",
+   "iv": "ARPU +5–15%",
+   "il": "",
+   "also": "Version A’s paywall (A3) opens on their line and date. Proof is yours, word for word."
+  },
+  "paywall-b": {
+   "idea": 3,
+   "t": "The 50% where people decide",
+   "why": "<b>Try</b> showing 50% OFF and the $143.88 monthly year on the first paywall, <b>because</b> today both hide behind “View all plans”.",
+   "iv": "ARPU +5–15%",
+   "il": "",
+   "also": "Version B’s paywall (B3) leads with Karli L.’s review and what your coach does, from your listing."
+  },
+  "paywall-c": {
+   "idea": 3,
+   "t": "The 50% where people decide",
+   "why": "<b>Try</b> showing 50% OFF and the $143.88 monthly year on the first paywall, <b>because</b> today both hide behind “View all plans”.",
+   "iv": "ARPU +5–15%",
+   "il": "",
+   "also": "Version C’s paywall (C3) is a Free vs Plus table built from your App Store listing."
   }
  },
  "langs": [],
@@ -1083,17 +1349,17 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
  "poster": "assets/walkthrough-poster.jpg",
  "compare": {
   "today": "today",
-  "proposed": "paywall",
+  "proposed": "paywall-a",
   "kicker": "The paywall, side by side",
   "title": "Your paywall today, and with the five ideas.",
-  "sub": "Same proof, same review, same price.",
+  "sub": "Version A, for the “loss” search. Same proof, same price; versions B and C open on the coach or a Free vs Plus table.",
   "todayCap": "rebuilt word for word from your recorded paywall",
   "rows": [
    {
     "h": "Headline",
     "idea": 1,
     "was": "“7 days for Free”",
-    "now": "“Reach 135 lbs by Feb 24, 2027”, with 1163 Cal and 104 g protein under it"
+    "now": "“Reach 135 lbs by Feb 24, 2027”, over their trend-weight line, with 1163 Cal and 104 g protein under it"
    },
    {
     "h": "Price",
@@ -1120,7 +1386,7 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
     "now": "Once: Monthly at $11.99/mo"
    }
   ],
-  "kept": "Kept: “+5 Million users”, “4.9 stars · 19K reviews”, Karli L.’s review, “No payment due now”, “Try For $0.00”, “View all plans”, the 7 free days and your blue."
+  "kept": "Kept: “+5 Million users”, “4.9 stars · 19K reviews”, “No payment due now”, “Try For $0.00”, “View all plans”, the 7 free days and your blue. Karli L.’s review moves to version B’s paywall."
  },
  "tour": {
   "introLede": "Five ideas to turn more MacrosFirst installs into Premium subscribers.",
@@ -1143,35 +1409,28 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
    },
    {
     "id": "welcome",
-    "d": 2400,
+    "d": 2200,
     "tap": [
      ".mf-cta",
-     1900
-    ]
-   },
-   {
-    "id": "goal",
-    "d": 2000,
-    "tap": [
-     ".mf-cta",
-     1600
+     1800
     ]
    },
    {
     "id": "target",
-    "d": 2300,
+    "d": 2800,
+    "pop": ".mf-hint",
     "tap": [
      ".mf-cta",
-     1900
+     2400
     ]
    },
    {
-    "id": "plan",
-    "d": 3300,
-    "pop": ".mf-goalcard",
+    "id": "plan-a",
+    "d": 3600,
+    "pop": ".mf-chart",
     "tap": [
      ".mf-cta",
-     2900
+     3200
     ]
    },
    {
@@ -1199,12 +1458,12 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
     ]
    },
    {
-    "id": "paywall",
+    "id": "paywall-a",
     "d": 3800,
     "pop": ".mf-off"
    },
    {
-    "id": "paywall",
+    "id": "paywall-a",
     "d": 1300,
     "tap": [
      ".mf-x",
@@ -1233,28 +1492,18 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
    "search": {
     "k": "Context",
     "t": "Opens on their App Store search",
-    "l": "A proposal: the flow follows what they typed."
+    "l": "Version A, for people who searched “loss”."
    },
    "welcome": {
     "k": "Context",
     "t": "Your welcome, your words",
     "l": "Under a line that repeats their search."
    },
-   "goal": {
-    "k": "Context",
-    "t": "Lose Weight, already picked",
-    "l": "They searched “loss”."
-   },
    "target": {
-    "k": "Context",
-    "t": "Target weight",
-    "l": "The date carries to the paywall."
-   },
-   "plan": {
-    "n": 1,
-    "t": "The plan, all the way to the price",
-    "l": "135 lbs by Feb 24, 2027.",
-    "o": "+10–20%",
+    "k": "Version A",
+    "t": "No goal question",
+    "l": "They searched “loss”: Lose Weight is set.",
+    "o": "+5–10%",
     "ol": "CR to purchase"
    },
    "log": {
@@ -1263,13 +1512,6 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
     "l": "Chicken Grilled: 54 g protein left.",
     "o": "+5–15%",
     "ol": "CR to purchase"
-   },
-   "paywall": {
-    "n": 3,
-    "t": "The 50% where people decide",
-    "l": "Monthly is $143.88 a year.",
-    "o": "+5–15%",
-    "ol": "ARPU"
    },
    "offer": {
     "n": 5,
@@ -1284,6 +1526,20 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
     "l": "Not between the plan and the price.",
     "o": "+5–10%",
     "ol": "CR to purchase"
+   },
+   "plan-a": {
+    "n": 1,
+    "t": "The plan, all the way to the price",
+    "l": "A line to 135 lbs by Feb 24, 2027.",
+    "o": "+10–20%",
+    "ol": "CR to purchase"
+   },
+   "paywall-a": {
+    "n": 3,
+    "t": "The 50% where people decide",
+    "l": "Over their line: monthly is $143.88 a year.",
+    "o": "+5–15%",
+    "ol": "ARPU"
    }
   }
  },
@@ -1325,6 +1581,10 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
     {
      "dt": "Welcome, goal, target weight, macro targets, food rows, “Create your Account”, paywall",
      "dd": "Your iOS onboarding as recorded by ScreensDesign in July 2026, verbatim. The targets (104 g protein, 99 g carbs, 39 g fat, 1163 Cal) are the recording’s; your app sets them from each user’s answers. Weights in lbs and the goal dates (1 lb a week from 11 Nov 2026) are ours."
+    },
+    {
+     "dt": "Autopilot, Copilot, Manual, weekly check-ins, trend weight, Macro Math, AI Food Search, Expenditure charts, 4+ million verified foods, Free vs Plus",
+     "dd": "Your <a href=\"https://apps.apple.com/us/app/macrosfirst-macro-tracker/id1253012487\">US App Store description</a>, read 11 Nov 2026; the coach-mode descriptions are its words, shortened. The Free column lists features the description doesn’t put under MacrosFirst Plus. The three versions, their questions and their paywalls are our proposal; per-meal amounts (104 g ÷ 3) and 8,141 Cal a week (1163 × 7) are computed."
     },
     {
      "dt": "Apple Ads searches",
@@ -1371,10 +1631,15 @@ html.tourmode .au-tour{display:block;position:fixed;inset:0;z-index:6;pointer-ev
 </script>
 
 <script>
-/* MacrosFirst hooks. The search (ad: a "loss", b "macro coach", c "calorie counter - mynetdiary") sets the first answer ("loss" → Lose Weight picked). The target weight sets the
-   goal date (1 lb a week from 11 Nov 2026). Logging foods counts down the protein target (104 g, from the recording). */
+/* MacrosFirst hooks. Three versions, one per Apple Ads search (S.ad: a "loss", b "macro coach", c "calorie counter - mynetdiary"):
+   screens with data-ad belong to one version. A skips the goal question (goal = lose), B asks the coach mode, C asks what they track.
+   The target weight sets the goal date (1 lb a week from 11 Nov 2026). Logging foods counts down the protein target (104 g, from the recording). */
 var MF_P = {oil: 0, veg: 3, broc: 3, chick: 50};
+/* the same stage in each version, so switching the search keeps you on the matching screen */
+var MF_V = [['target', 'goal', 'track-c'], ['target', 'coach-b', 'goal'], ['plan-a', 'plan-b', 'plan-c'], ['paywall-a', 'paywall-b', 'paywall-c']];
+function mfInFlow(id){ var a = scr[id] && scr[id].dataset.ad; return !a || a.split(' ').indexOf(S.ad) > -1; }
 window.onSync = function(S){
+  if (S.ad === 'a') S.goal = 'lose';
   S.twdate = S.tw;
   var dt = (C.labels.twdate || {})[S.tw] || '';
   document.querySelectorAll('[data-bind="label:twdate"]').forEach(function(el){ el.textContent = dt; });
@@ -1384,8 +1649,20 @@ window.onSync = function(S){
   if (l) l.textContent = Math.max(0, 104 - used); if (b) b.style.width = Math.min(100, used / 104 * 100) + '%';
   document.querySelectorAll('[data-show^="logged:"]').forEach(function(el){ el.style.display = el.dataset.show === 'logged:' + S.logged ? '' : 'none'; });
 };
+/* switching the search above the prototype: stay on the matching stage of the new version */
+document.addEventListener('click', function(e){
+  if (!e.target.closest('[data-pick^="ad:"]')) return;
+  setTimeout(function(){                              /* after the engine has applied the pick (this script loads first) */
+    if (!cur || mfInFlow(cur)) return;
+    var k = 'abc'.indexOf(S.ad), row = MF_V.find(function(r){ return r.indexOf(cur) > -1; });
+    jump(row ? row[k] : ORDER[0]);
+  }, 0);
+});
 window.onEnter = function(id, S){
-  if (id === 'goal' && S._ad !== S.ad) { S.goal = S.ad === 'a' ? 'lose' : ''; S._ad = S.ad; sync(); }
+  /* opened from a shortlist link or the hero: switch to the version that screen belongs to */
+  var a = scr[id].dataset.ad;
+  if (a && a.split(' ').indexOf(S.ad) < 0) { S.ad = a.split(' ')[0]; sync(); return; }
+  if (id === 'goal' && S._ad !== S.ad) { S.goal = ''; S._ad = S.ad; sync(); }
   if (id === 'log' && !SHOT) { S.eat = []; sync(); }
 };
 </script>
@@ -1396,6 +1673,11 @@ var S = C.state, scr = {}, ORDER = [], hist = [], cur = null, Q = location.searc
 var SHOT = /[?&](shot|phone|tour)\b/.test(Q), HERO = /[?&]hero\b/.test(Q);
 /* a screen with data-aside (e.g. the paywall TODAY for the side-by-side) renders for stills but is not part of the flow */
 document.querySelectorAll('.scr').forEach(function(s){ scr[s.dataset.id] = s; if (!s.hasAttribute('data-aside')) ORDER.push(s.dataset.id); });
+/* PER-AD FLOWS: a screen with data-ad="a b" is only in those ads' flows; data-go="next" = next screen of this flow */
+var ALL = ORDER.slice();
+function flowOrder(){ return ALL.filter(function(id){ var a = scr[id].dataset.ad; return !a || a.split(' ').indexOf(String(S.ad)) > -1; }); }
+ORDER = flowOrder();
+function nextOf(t){ if (t !== 'next') return t; var i = ORDER.indexOf(cur); return ORDER[i + 1] || ORDER[i]; }
 if (/[?&]shot\b/.test(Q)) document.documentElement.classList.add('shot');
 if (/[?&]phone\b/.test(Q)) document.documentElement.classList.add('shot', 'phoneonly');
 if (/[?&]clear\b/.test(Q)) document.documentElement.classList.add('clear');
@@ -1426,6 +1708,7 @@ function setLang(l){
 function lab(key){ var v = S[key]; var L = C.labels[key]; if (Array.isArray(v)) return v.map(function(x){ return L && L[x] || x; }).join(', '); return (L && L[v]) || v; }
 function sync(){
   applyLang();
+  var o = flowOrder(); if (o.join() !== ORDER.join()) { ORDER = o; var cc = document.getElementById('chips'); if (cc) cc.innerHTML = ''; if (cur) { paint(); return; } }
   document.querySelectorAll('[data-bind]').forEach(function(el){
     var b = el.dataset.bind, m = b.split(':');
     el.textContent = m[0] === 'label' ? lab(m[1]) : m[0] === 'count' ? (S[m[1]] || []).length : (S[b] == null ? '' : S[b]);
@@ -1491,10 +1774,10 @@ document.addEventListener('click', function(e){
   var L = e.target.closest('[data-setlang]'); if (L){ setLang(L.dataset.setlang); return; }
   if (e.target.closest('[data-langtoggle]') && LANGS.length > 1){ var k = LANGS.findIndex(function(x){ return x.code === S.lang; }); setLang(LANGS[(k + 1) % LANGS.length].code); return; }
   var el = e.target.closest('[data-go],[data-back],[data-pick],[data-toggle]'); if (!el) return;
-  if (el.dataset.pick){ var p = el.dataset.pick.split(':'); S[p[0]] = p[1]; sync(); if (el.dataset.advance) setTimeout(function(){ go(el.dataset.advance); }, 170); return; }
+  if (el.dataset.pick){ var p = el.dataset.pick.split(':'); S[p[0]] = p[1]; sync(); if (el.dataset.advance) setTimeout(function(){ go(nextOf(el.dataset.advance)); }, 170); return; }
   if (el.dataset.toggle){ var q = el.dataset.toggle.split(':'), a = S[q[0]] = S[q[0]] || [], i = a.indexOf(q[1]); if (i > -1) a.splice(i, 1); else a.push(q[1]); sync(); return; }
   if ('back' in el.dataset) return back();
-  go(el.dataset.go);
+  go(nextOf(el.dataset.go));
 });
 document.querySelectorAll('[data-input]').forEach(function(inp){
   inp.value = S[inp.dataset.input] || ''; inp.addEventListener('input', function(){ S[inp.dataset.input] = inp.value.trim() || 'there'; sync(); });
@@ -1674,6 +1957,11 @@ function tourInit(){
   var rows = {}; (D.rows || []).forEach(function(r){ rows[r.id] = r; });
   var caps = D.stepCaps || {}, steps = document.getElementById('duoSteps'), tbl = document.getElementById('duoTbl');
   var stage = document.getElementById('duoStage');
+  /* per-ad versions: a step may name a different screen per flow ({id, label, ids:{a:'pw-a', b:'pw-b'}}) */
+  var STEPS = (D.steps || []).filter(function(s){ return s.id; });
+  function sid(s, k){ return (s.ids && s.ids[k]) || s.id; }
+  function stepOf(k, scrId){ return STEPS.find(function(s){ return sid(s, k) === scrId; }); }
+  function stepFor(scrId){ for (var i = 0; i < F.length; i++) { var s = stepOf(F[i].k, scrId); if (s) return s; } return null; }
 
   function cw(i){ return W[i] && W[i].contentWindow && W[i].contentWindow.jump ? W[i].contentWindow : null; }
   function label(id){ var s = (D.steps || []).find(function(x){ return x.id === id; }); if (s && s.label) return s.label; var w = cw(0); return (w && w.C.chips && w.C.chips[id]) || id; }
@@ -1688,15 +1976,19 @@ function tourInit(){
     });
     var sc = document.getElementById('duoStepCap'); if (sc) sc.innerHTML = shared && id === 'today' ? shared : '';
   }
-  function both(id, n){
-    busy = true; F.forEach(function(f, i){ var w = cw(i); if (w && w.cur !== id) w.jump(id); }); busy = false; paintStep(id);
-    if (n) setTimeout(function(){ F.forEach(function(f, i){ var w = cw(i); if (w && w.pulseIdea) w.pulseIdea(n); }); }, 380);
+  function both(id, n, only){
+    var st = STEPS.find(function(s){ return s.id === id; }) || stepFor(id);
+    busy = true; F.forEach(function(f, i){ var w = cw(i), t = st ? sid(st, f.k) : id; if (w && w.cur !== t) w.jump(t); }); busy = false; paintStep(st ? st.id : id);
+    if (n) setTimeout(function(){ F.forEach(function(f, i){ var w = cw(i); if (w && w.pulseIdea && (!only || only === f.k)) w.pulseIdea(n); }); }, 380);
+    root.querySelectorAll('[data-duorec]').forEach(function(b){ b.classList.toggle('on', !!only && b.dataset.duorec === only + ':' + String(n).slice(1)); });
     root.querySelectorAll('[data-duoidea]').forEach(function(b){ b.classList.toggle('on', +b.dataset.duoidea === n); });
   }
   function follow(i, id){
     if (busy) return;
-    busy = true; F.forEach(function(f, j){ var w = cw(j); if (j !== i && w && w.cur !== id) w.jump(id); }); busy = false;
-    paintStep(id);
+    var st = stepOf(F[i].k, id);
+    busy = true; F.forEach(function(f, j){ var w = cw(j), t = st ? sid(st, f.k) : id; if (j !== i && w && w.cur !== t) w.jump(t); }); busy = false;
+    paintStep(st ? st.id : id);
+    root.querySelectorAll('[data-duorec]').forEach(function(b){ b.classList.remove('on'); });
     root.querySelectorAll('[data-duoidea]').forEach(function(b){ b.classList.remove('on'); });
   }
   var ready_n = 0;
@@ -1734,6 +2026,14 @@ function tourInit(){
   var ib = document.getElementById('duoIdeas');
   if (ib && window.C && C.ideas) ib.innerHTML = '<span class="au-duo-sep">The five ideas</span>' + C.ideas.map(function(d, i){
     return '<button type="button" data-duoidea="' + (i + 1) + '" data-scr="' + d.screen + '"><i>' + (i + 1) + '</i>' + d.title + '</button>'; }).join('');
+  /* per-ad recommendations under each phone: flows[k].recs = [{step, title, why, impact, il}], pulse data-hl="<k><n>" */
+  F.forEach(function(f){
+    var box = document.getElementById('duoRec' + f.k); if (!box || !f.recs) return;
+    box.innerHTML = (f.version ? '<p class="au-rec-v">' + f.version + '</p>' : '') + f.recs.map(function(r, i){
+      return '<button type="button" class="au-rec" data-duorec="' + f.k + ':' + (i + 1) + '" data-step="' + r.step + '"><i>' + f.k.toUpperCase() + (i + 1) + '</i>' +
+        '<span><b>' + r.title + '</b><em>' + r.why + '</em></span>' + (r.impact ? '<mark>' + r.impact + '<small>' + (r.il || '') + '</small></mark>' : '') + '</button>';
+    }).join('');
+  });
   /* the table: one row per step that differs */
   if (tbl) {
     var h = '<caption>' + D.tableTitle + '<span>' + D.tableSub + '</span></caption><thead><tr><th>Screen</th>' +
@@ -1751,6 +2051,7 @@ function tourInit(){
   root.addEventListener('click', function(e){
     var b = e.target.closest('[data-duo]'); if (b) { both(b.dataset.duo); toStage(); return; }
     var n = e.target.closest('[data-duoidea]'); if (n) { both(n.dataset.scr, +n.dataset.duoidea); return; }
+    var rc = e.target.closest('[data-duorec]'); if (rc) { var q = rc.dataset.duorec.split(':'); both(rc.dataset.step, q[0] + q[1], q[0]); return; }
     var g = e.target.closest('[data-duogo]'); if (g) { both(F.length && cw(0) ? cw(0).ORDER[0] : 'ad'); toStage(g.dataset.duogo); return; }
     var t = e.target.closest('[data-duoone]');
     if (t) { stage.dataset.one = t.dataset.duoone; root.querySelectorAll('[data-duoone]').forEach(function(x){ x.classList.toggle('on', x === t); }); }
@@ -1765,5 +2066,117 @@ function tourInit(){
 })();
 /* DUO:END */
 </script>
+<script>
+/* MOTION:START — hero words + icon, scroll reveal, count-up, and the live walkthrough in the ad phones. Config: #motionData. */
+(function run(){
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', run); return; }
+  var Q = location.search, H = document.documentElement;
+  if (/[?&](embed|shot|phone|tour|hero|app)\b/.test(Q) || H.classList.contains('appmode')) return;
+  var el = document.getElementById('motionData'); if (!el) return;
+  var M = JSON.parse(el.textContent), RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function $(s, r){ return (r || document).querySelector(s); }
+  function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+
+  /* hero: the app's colour, its own words drifting across, the icon bobbing, a stats strip under it */
+  var hero = $('.au-top-hero');
+  if (hero && M.hero) {
+    hero.classList.add('au-mx');
+    var w = M.hero.words || [], h = '';
+    w.forEach(function(t, k){ h += '<span style="top:' + (4 + k * (88 / Math.max(w.length, 1))).toFixed(1) + '%;animation-duration:' + (16 + (k * 7) % 11) + 's;animation-delay:-' + ((k * 3.7) % 16).toFixed(1) + 's;font-size:' + (18 + (k * 5) % 16) + 'px">' + t + '</span>'; });
+    var d = document.createElement('div'); d.className = 'au-mx-words'; d.setAttribute('aria-hidden', 'true'); d.innerHTML = h; hero.insertBefore(d, hero.firstChild);
+    if (M.hero.icon) { var im = document.createElement('img'); im.className = 'au-mx-icon'; im.src = M.hero.icon; im.alt = ''; hero.appendChild(im); }
+    if (M.hero.stats) { var st = document.createElement('div'); st.className = 'au-mx-stats';
+      st.innerHTML = M.hero.stats.map(function(s){ return '<div><b>' + s[0] + '</b><span>' + s[1] + '</span></div>'; }).join(''); hero.parentNode.insertBefore(st, hero.nextSibling); }
+  }
+
+  /* count-up for stats and outcome numbers */
+  function countUp(n){
+    var t = n.textContent, m = /^([^\d]*)([\d.,]+)(.*)$/.exec(t); if (!m || RM) return;
+    var raw = m[2].replace(/,/g, ''), v = parseFloat(raw), dec = (raw.split('.')[1] || '').length, t0 = performance.now();
+    if (!isFinite(v) || v === 0) return;
+    (function f(){ var k = Math.min(1, (performance.now() - t0) / 900), e = 1 - Math.pow(1 - k, 3), x = (v * e).toFixed(dec);
+      if (m[2].indexOf(',') > -1) x = Number(x).toLocaleString('en-US'); n.textContent = m[1] + x + m[3]; if (k < 1) requestAnimationFrame(f); else n.textContent = t; })();
+  }
+  /* scroll reveal */
+  var rv = $$(M.reveal || '.au-sec .au-wrap > *, .au-idea, .au-pf-c, .au-mx-stats div');
+  rv.forEach(function(n){ n.classList.add('au-rv'); });
+  var cnt = $$(M.count || '.au-mx-stats b, .au-duo-stats b, .au-stat b');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (!e.isIntersecting) return; io.unobserve(e.target);
+      e.target.classList.add('au-in'); if (e.target._count) countUp(e.target); }); }, {rootMargin: '0px 0px -8% 0px'});
+    rv.forEach(function(n){ io.observe(n); });
+    cnt.forEach(function(n){ n._count = 1; io.observe(n); });
+  } else rv.forEach(function(n){ n.classList.add('au-in'); });
+
+  /* live walkthrough inside the three ad phones */
+  var stage = document.getElementById('duoStage'), data = document.getElementById('duoData'); if (!stage || !data) return;
+  var D = JSON.parse(data.textContent), F = D.flows, W = M.walk || {}, walk = {on: false, tok: 0};
+  var LABEL = W.button || '▶ Play the walkthrough in the phones';
+  var bar = document.createElement('div'); bar.className = 'au-walk';
+  bar.innerHTML = '<button type="button" id="walkBtn">' + LABEL + '</button><div class="au-walkbar" id="walkBar"><span id="walkTx"></span><i><b id="walkPr"></b></i></div>';
+  var head = $('#duo .au-duo-h'); head.parentNode.insertBefore(bar, head.nextSibling);
+  $$('.au-duo-fr').forEach(function(fr){ var f = document.createElement('div'); f.className = 'au-finger'; fr.appendChild(f); });
+  function frames(){ return F.map(function(f){ return $('#duoFr' + f.k + ' iframe'); }); }
+  function wait(ms, tk){ return new Promise(function(res, rej){ setTimeout(function(){ tk === walk.tok ? res() : rej('stop'); }, ms); }); }
+  function cap(t, p){ $('#walkTx').innerHTML = t; $('#walkPr').style.width = p + '%'; }
+  function vis(x){ return !!x && x.getClientRects().length > 0 && getComputedStyle(x).visibility !== 'hidden'; }
+  function target(i, which){
+    var fr = frames()[i], w = fr && fr.contentWindow; if (!w || !w.scr || !w.cur) return null;
+    var s = w.scr[w.cur], own = (W.taps || {})[w.cur], list = [];
+    if (own) list = (Array.isArray(own) ? own : [own]).map(function(q){ return $(q, s); });
+    else {
+      var picks = $$('[data-pick]:not([data-pick^="ad:"]),[data-toggle]', s).filter(vis);
+      if (picks.length && !picks.some(function(p){ return p.classList.contains('on'); })) list.push(picks[0]);
+      list.push($$('[data-go]:not([data-back]),[data-advance]', s).filter(vis).pop());
+    }
+    return list.filter(vis)[which] || null;
+  }
+  async function tap(i, el, tk){
+    var fr = frames()[i]; if (!el || !fr) return;
+    var box = fr.parentNode, f = $('.au-finger', box);
+    var b = box.getBoundingClientRect(), fb = fr.getBoundingClientRect(), sc = fb.width / fr.offsetWidth, r = el.getBoundingClientRect();
+    f.classList.add('on'); f.style.left = (fb.left - b.left + (r.left + r.width / 2) * sc) + 'px'; f.style.top = (fb.top - b.top + (r.top + r.height / 2) * sc) + 'px';
+    await wait(420, tk); f.classList.add('press'); await wait(130, tk); f.classList.remove('press');
+    /* answers are set in the phone's own state (no navigation); buttons are only pressed: the step bar moves every
+       phone together, so the three versions never race each other */
+    var w = fr.contentWindow, pk = el.dataset.pick, tg = el.dataset.toggle;
+    if (pk) { var p = pk.split(':'); w.S[p[0]] = p[1]; w.sync(); }
+    else if (tg) { var q = tg.split(':'), a = w.S[q[0]] = w.S[q[0]] || []; if (a.indexOf(q[1]) < 0) a.push(q[1]); w.sync(); }
+    await wait(120, tk);
+  }
+  function plain(s){ var d = document.createElement('div'); d.innerHTML = s || ''; return d.textContent; }
+  async function start(){
+    stop(); var tk = ++walk.tok; walk.on = true; $('#walkBtn').classList.add('on'); $('#walkBtn').textContent = '■ Stop'; $('#walkBar').classList.add('on'); bar.classList.add('on');
+    var steps = (D.steps || []).filter(function(s){ return s.id && (W.skip || ['today']).indexOf(s.id) < 0; }), n = steps.length;
+    var rows = {}; (D.rows || []).forEach(function(r){ rows[r.id] = r; });
+    try {
+      /* the phones' tops sit just under the sticky caption bar */
+      scrollTo({top: stage.getBoundingClientRect().top + scrollY - 190, behavior: RM ? 'auto' : 'smooth'});
+      for (var k = 0; k < n; k++) {
+        var s = steps[k], btn = $('#duoSteps button[data-id="' + s.id + '"]'); if (btn) btn.click();
+        cap((W.captions || {})[s.id] || ('<b>' + (btn ? btn.textContent : s.id) + '.</b> ' + (rows[s.id] ? 'Each ad gets its own version of this screen.' : (plain((D.stepCaps || {})[s.id]) || 'Same screen for every ad.'))), Math.round((k + 1) / (n + 1) * 100));
+        await wait(k ? 1500 : 2200, tk);
+        if (k === n - 1) break;
+        /* each phone taps through its own screen: an answer first if nothing is picked, then its button */
+        for (var pass = 0; pass < 2; pass++) {
+          var els = F.map(function(f, i){ return target(i, pass); });
+          if (!els.some(Boolean)) break;
+          await Promise.all(els.map(function(e, i){ return tap(i, e, tk); }));
+          await wait(300, tk);
+        }
+        $$('.au-finger').forEach(function(f){ f.classList.toggle('on', false); });
+      }
+      cap(W.end || 'That’s the three versions. Tap any phone, or a recommendation under it.', 100); await wait(2600, tk);
+    } catch (e) {}
+    stop();
+  }
+  function stop(){ if (!walk.on) return; walk.on = false; walk.tok++; $('#walkBtn').classList.remove('on'); $('#walkBtn').textContent = LABEL; $('#walkBar').classList.remove('on'); bar.classList.remove('on'); $$('.au-finger').forEach(function(f){ f.classList.remove('on'); }); }
+  $('#walkBtn').addEventListener('click', function(){ walk.on ? stop() : start(); });
+  document.addEventListener('pointerdown', function(e){ if (walk.on && e.isTrusted && !e.target.closest('#walkBtn') && e.target.closest('#duo')) stop(); }, true);
+  $$('[data-walk]').forEach(function(b){ b.addEventListener('click', function(e){ e.preventDefault(); start(); }); });
+})();
+/* MOTION:END */
+</script>
+<script type="application/json" id="motionData">{"hero": {"words": ["loss", "macro coach", "calorie counter - mynetdiary", "macro log", "macrosfirst", "Macro Math", "Autopilot · Copilot · Manual", "macros", "protein", "weekly check-in"], "icon": "assets/brand/appstore-icon.jpg", "stats": [["★ 4.9", "from 24K ratings on the US App Store"], ["30", "Apple Ads search terms you appear for (account-level)"], ["3", "versions of your onboarding, one per search"], ["1", "paywall every install meets today"]]}, "walk": {}, "heroWalk": "▶ Watch it play in the phones"}</script>
 </body>
 </html>
